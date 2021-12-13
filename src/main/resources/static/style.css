@@ -1,0 +1,19 @@
+header{
+
+    color: #0d164b;
+    background: url("../../../resourses/images.png");
+    backface-visibility: inherit;
+    border: 1px solid black;
+}
+
+h1{
+    font-size: 15pt;
+}
+
+h2{
+    font-size: 12pt;
+}
+
+table{
+    font-size: 15pt;
+}

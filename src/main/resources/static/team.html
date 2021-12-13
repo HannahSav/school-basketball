@@ -3,11 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Team3m</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
+<script>
+    // вытаскиваем id
+    t_id = getUrlVars()["id"];
 
+    function getUrlVars() {
+        const vars = {};
+        const parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+            vars[key] = value;
+        });
+        return vars;
+    }
+</script>
+<header>
+        <h1>Курсовая работа "Баскетбол в школах"</h1>
+        <h2>Группа Р33301</h2>
+        <h2>Геллер Леонид, Савон Галина</h2>
 </header>
-    <d1>Team</d1>
+
+    <h2 id="t_id">Team id:</h2>
+    <h2 id="t_name">Team name:</h2>
 </body>
+
+
+<script>//заполняем инфу по id
+    document.getElementById("t_id").innerHTML += t_id;
+</script>
+
 </html>
