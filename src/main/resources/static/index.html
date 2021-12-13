@@ -22,6 +22,10 @@
         team2: {
             team_name: "Blohi",
             team_id: "2"
+        },
+        team3: {
+            team_name: "Krohi",
+            team_id: "3"
         }
     }
 
@@ -32,14 +36,13 @@
     const table = document.createElement('table');
     const header = document.createElement('tr');
     header.innerHTML = `<th>Teams</th>`
-    header.innerHTML += colNames.map(Teams => `<th>${name}</th>`).join('');
+    header.innerHTML += colNames.map(a => '<th>'+name+'</th>').join('');
     table.appendChild(header);
-
 
     // Now lets append all the rows
     const rows = keys.map((key) => {
         const tr = document.createElement('tr');
-        tr.innerHTML = colNames.map(team_name => `<td><a href="Desktop/ISBD/Front/school-basketball/src/main/resources/static/team.html" id = "1" > ${source[key].team_name}</a></td>`).join('');
+        tr.innerHTML = ('<td><a href="team.html?id='+source[key].team_id+'">'+ source[key].team_name +'</a></td>');
         return tr;
     });
 
@@ -47,17 +50,6 @@
 
     // render
     document.body.appendChild(table);
-
-    var data = {
-        "1":"Team1",
-        "2":"Team2",
-        "3":"Team3"
-    };
-
-    var str = '';
-    for(var key in data){
-        str+='<tr><td>'+ e + '</td><td>'+data[e]+'</td></tr>';}
-    $('#data').append(str);
 </script>
 </body>
 </html>
