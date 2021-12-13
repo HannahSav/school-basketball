@@ -2,33 +2,62 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Дурацкое задание</title>
+    <title>Basket</title>
+
 </head>
-<style>
-    #buttonWrapper{
-        position:absolute;
-        display: flex; align-items: center; justify-content: space-around;
-        width:400px; height:300px;
-        left: 50%; margin-left: -200px;
-        top: 50%; margin-top: -150px;
-        background:linear-gradient(45deg, #e66465, #9198e5); border-radius:5px;
-    }
-    button{
-        width: 150px; height:100px;
-        font-family: "Comic Sans MS";
-    }
-    p{
-        text-align: center;
-        color: blue;
-        font-family: "Comic Sans MS";
-    }
-</style>
 <body>
-    <p>Welcome to our basketball statistics app</p>
-    <p>Made by: Leonid Geller, Galina Savon</p>
-    <div id="buttonWrapper">
-        <a style="text-decoration: none; color:blue" href="/sjg/hello"><button>Get hello message</button></a>
-        <a style="text-decoration: none; color:blue" href="/sjg/bye"><button>Get bye message</button></a>
+<header>
+
+</header>
+    <div>
+
     </div>
+
+<script>
+    const source = {
+        team1: {
+            team_name: "Lohi",
+            team_id: "1"
+        },
+        team2: {
+            team_name: "Blohi",
+            team_id: "2"
+        }
+    }
+
+    const keys = Object.keys(source); // get the names properly
+    const colNames = Object.keys(source[keys[0]]); // get all column names
+
+    // Let's form table and header first
+    const table = document.createElement('table');
+    const header = document.createElement('tr');
+    header.innerHTML = `<th>Teams</th>`
+    header.innerHTML += colNames.map(Teams => `<th>${name}</th>`).join('');
+    table.appendChild(header);
+
+
+    // Now lets append all the rows
+    const rows = keys.map((key) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = colNames.map(team_name => `<td><a href="Desktop/ISBD/Front/school-basketball/src/main/resources/static/team.html" id = "1" > ${source[key].team_name}</a></td>`).join('');
+        return tr;
+    });
+
+    rows.forEach(r => table.appendChild(r));
+
+    // render
+    document.body.appendChild(table);
+
+    var data = {
+        "1":"Team1",
+        "2":"Team2",
+        "3":"Team3"
+    };
+
+    var str = '';
+    for(var key in data){
+        str+='<tr><td>'+ e + '</td><td>'+data[e]+'</td></tr>';}
+    $('#data').append(str);
+</script>
 </body>
 </html>
