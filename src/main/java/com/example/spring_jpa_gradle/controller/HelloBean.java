@@ -43,7 +43,17 @@ public class HelloBean {
     @GetMapping("/teams")
     public ResponseEntity<String> teams() {
         StringBuilder sb = new StringBuilder();
-        teamService.getAll().forEach(sb::append);
+        sb.append("{\"teams\": [");
+        boolean first = true;
+        for (Team el : teamService.getAll()) {
+            if (first) {
+                first = false;
+            } else {
+                sb.append(",");
+            }
+            sb.append(el);
+        }
+        sb.append("]}");
         return new ResponseEntity<String>(sb.toString(), HttpStatus.OK);
         //return new ResponseEntity<String>(personService.findByPersonId(1).toString(), HttpStatus.OK);
     }

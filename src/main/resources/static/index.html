@@ -3,53 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <title>Basket</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 
 <header>
-    <h1>Курсовая работа "Баскетбол в школах"</h1>
-    <h2>Группа Р33301</h2>
-    <h2>Геллер Леонид, Савон Галина</h2>
+    <div id="headerImage"></div>
+    <div id="headerInfo">
+        <p>Курсовая работа "Баскетбол в школах"</p>
+        <p>Группа Р33301</p>
+        <p>Геллер Леонид, Савон Галина</p>
+    </div>
 </header>
 
+<div class="team welcomeMessage">
+    <p>Лидеры текущего турнира:</p>
+</div>
+<div id="wrapper">
+
+</div>
+
 <script>
-    const source = {
-        team1: {
-            team_name: "Lohi",
-            team_id: "1"
-        },
-        team2: {
-            team_name: "Blohi",
-            team_id: "2"
-        },
-        team3: {
-            team_name: "Krohi",
-            team_id: "3"
-        }
-    }
 
-    const keys = Object.keys(source); // get the names properly
-    const colNames = Object.keys(source[keys[0]]); // get all column names
+    document.addEventListener("DOMContentLoaded", function(event) {
+        fetch("teams", {
+            method: "get",
+            headers: { "Content-Type": "application/json" }
+        })
+            .then(resp => {
+                if (resp.status === 200) {
+                    return resp.json()
+                } else {
+                    console.log("Status: " + resp.status)
+                    return Promise.reject("server")
+                }
+            })
+            .then(dataJson => {
+                dataJson.teams.forEach(function (team) {
+                    document.getElementById("wrapper").innerHTML +=
+                        `<div class="team" ">
+                            <a href="team.html?id=${team.teamId}">${team.name}</a>
+                            <p><b>${team.school}</b></p>
+                            <p><b>${team.class_group}</b></p>
+                        </div>`
+                });
+            })
+            .catch(err => {
+                if (err === "server") return
+                console.log(err)
+            })
 
-    // Let's form table and header first
-    const table = document.createElement('table');
-    const header = document.createElement('tr');
-    header.innerHTML = `<th>Teams</th>`
-    header.innerHTML += colNames.map(a => '<th>'+name+'</th>').join('');
-    table.appendChild(header);
-
-    // Now lets append all the rows
-    const rows = keys.map((key) => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = ('<td><a href="team.html?id='+source[key].team_id+'">'+ source[key].team_name +'</a></td>');
-        return tr;
     });
-
-    rows.forEach(r => table.appendChild(r));
-
-    // render
-    document.body.appendChild(table);
 </script>
 </body>
 </html>
+
