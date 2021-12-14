@@ -2,11 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Team3m</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Team</title>
+    <link rel="import" href="header.html">
+    <link rel="stylesheet" href="css/header.css">
 </head>
 <body>
+    <header>
+
+    </header>
+
 <script>
+
+    fetch("./header.html")
+        .then(response => {
+            return response.text()
+        })
+        .then(data => {
+            document.querySelector("header").innerHTML = data;
+        });
     // вытаскиваем id
     t_id = getUrlVars()["id"];
 
@@ -18,11 +31,6 @@
         return vars;
     }
 </script>
-<header>
-        <h1>Курсовая работа "Баскетбол в школах"</h1>
-        <h2>Группа Р33301</h2>
-        <h2>Геллер Леонид, Савон Галина</h2>
-</header>
 
     <h2 id="t_id">Team id:</h2>
     <h2 id="t_name">Team name:</h2>
