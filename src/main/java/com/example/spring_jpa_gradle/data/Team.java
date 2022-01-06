@@ -24,6 +24,9 @@ public class Team implements Serializable {
     @Column(name = "class")
     private String class_group;
 
+    @Column(name = "photo_id")
+    private Integer photo_id;
+
     public Long getTeamId() {
         return teamId;
     }
@@ -55,6 +58,10 @@ public class Team implements Serializable {
     public void setClass_group(String class_group) {
         this.class_group = class_group;
     }
+
+    public void setPhoto_id(Integer photo_id) { this.photo_id = photo_id; }
+
+    public Integer getPhoto_id() { return photo_id; }
 
     @Override
     public String toString() {

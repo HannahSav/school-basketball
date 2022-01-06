@@ -15,19 +15,36 @@
         <p>Группа Р33301</p>
         <p>Геллер Леонид, Савон Галина</p>
     </div>
+    <div id="headerMenu">
+        <div><p>Таблица</p></div>
+        <div><p>Статистика</p></div>
+    </div>
 </header>
 
 <div class="team welcomeMessage">
     <p>Лидеры текущего турнира:</p>
 </div>
 <div id="wrapper">
-
+    <table id="tournamentTable">
+        <tr>
+            <th>Позиция</th>
+            <th>Лого</th>
+            <th>Клуб</th>
+            <th>Игры</th>
+            <th>Победы</th>
+            <th>Ничьи</th>
+            <th>Поражения</th>
+            <th>Очки дома</th>
+            <th>Очки в гостях</th>
+            <th>Очки в турнире</th>
+        </tr>
+    </table>
 </div>
 
 <script>
 
     document.addEventListener("DOMContentLoaded", function(event) {
-        fetch("teams", {
+        fetch("teaminfo", {
             method: "get",
             headers: { "Content-Type": "application/json" }
         })
@@ -40,13 +57,23 @@
                 }
             })
             .then(dataJson => {
-                dataJson.teams.forEach(function (team) {
-                    document.getElementById("wrapper").innerHTML +=
-                        `<div class="team" ">
-                            <a href="team.html?id=${team.teamId}">${team.name}</a>
-                            <p><b>${team.school}</b></p>
-                            <p><b>${team.class_group}</b></p>
-                        </div>`
+                console.log(dataJson);
+                position = 1;
+                dataJson.teamInfo.forEach(function (team) {
+                    document.getElementById("tournamentTable").innerHTML +=
+                        `<tr>
+                            <td>${position}</td>
+                            <td><img height="50px" src="img/team/team${team.photo_id}.jpg" alt="team logo"></td>
+                            <td><a href="team.html?id=${team.teamId}">${team.name}</a></td>
+                            <td><p>${team.games_count}</p></td>
+                            <td><p>${team.victories}</p></td>
+                            <td><p>${team.draws}</p></td>
+                            <td><p>${team.games_count - (team.victories + team.draws)}</p></td>
+                            <td><p>${team.scored_home}</p></td>
+                            <td><p>${team.scored_guest}</p></td>
+                            <td><p>${team.tournament_score}</p></td>
+                        </tr>`
+                    position++;
                 });
             })
             .catch(err => {

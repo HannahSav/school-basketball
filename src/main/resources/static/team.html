@@ -5,23 +5,28 @@
     <title>Team</title>
     <link rel="import" href="header.html">
     <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/team.css">
 </head>
 <body>
     <header>
-
     </header>
 
-<script>
+    <div id="teamInfoWrapper">
+        <div>
+            <h4 id="t_name">Team name: </h4>
+            <h4 id="t_school">Team school: </h4>
+            <h4 id="t_class">Team class: </h4>
+            <h4 id="t_gameCount">Games played: </h4>
+            <h4 id="t_pointsAtHome">Home points: </h4>
+            <h4 id="t_pointsAsGuest">Guest points: </h4>
+            <br>
+            <h3>Best players: </h3>
+            <div id="wrapper"></div>
+        </div>
+    </div>
+</body>
 
-    fetch("./header.html")
-        .then(response => {
-            return response.text()
-        })
-        .then(data => {
-            document.querySelector("header").innerHTML = data;
-        });
-    // вытаскиваем id
-    t_id = getUrlVars()["id"];
+<script>
 
     function getUrlVars() {
         const vars = {};
@@ -30,15 +35,74 @@
         });
         return vars;
     }
+
+    fetch("./header.html")
+        .then(response => {
+            return response.text()
+        })
+        .then(data => {
+            document.querySelector("header").innerHTML = data;
+        });
+
+    // вытаскиваем id
+    t_id = getUrlVars()["id"];
+    fetch(`teaminfo/${t_id}`, {
+        method: "get",
+        headers: { "Content-Type": "application/json" }
+    })
+        .then(resp => {
+            if (resp.status === 200) {
+                return resp.json()
+            } else {
+                console.log("Status: " + resp.status)
+                return Promise.reject("server")
+            }
+        })
+        .then(dataJson => {
+            console.log(dataJson);
+            document.getElementById("t_name").innerHTML += dataJson.team.name;
+            document.getElementById("t_school").innerHTML += dataJson.team.school;
+            document.getElementById("t_class").innerHTML += dataJson.team.class_group;
+            document.getElementById("t_gameCount").innerHTML += dataJson.gameCount;
+            document.getElementById("t_pointsAtHome").innerHTML += dataJson.pointsAtHome;
+            document.getElementById("t_pointsAsGuest").innerHTML += dataJson.pointsAsGuest;
+            document.getElementById("teamInfoWrapper").innerHTML += `<img height="250px" src="img/team/team${dataJson.team.photo_id}.jpg" alt="team logo">`;
+        })
+        .catch(err => {
+            if (err === "server") return
+            console.log(err)
+        });
+
+
+    fetch(`playersbyteam/${t_id}`, {
+        method: "get",
+        headers: { "Content-Type": "application/json" }
+    })
+        .then(resp => {
+            if (resp.status === 200) {
+                return resp.json()
+            } else {
+                console.log("Status: " + resp.status)
+                return Promise.reject("server")
+            }
+        })
+        .then(dataJson => {
+            console.log(dataJson);
+            dataJson.playerInfo.forEach(function (info) {
+                document.getElementById("wrapper").innerHTML +=
+                    `<div class="player">
+                            <p><b>Last name: ${info.last_name}</b></p>
+                            <p><b>Weight: ${info.weight}</b></p>
+                            <p><b>Height: ${info.height}</b></p>
+                            <p><b>Amplua: ${info.amplua}</b></p>
+                            <p><b>Points: ${info.points}</b></p>
+                        </div>`
+            });
+        })
+        .catch(err => {
+            if (err === "server") return
+            console.log(err)
+        });
+
 </script>
-
-    <h2 id="t_id">Team id:</h2>
-    <h2 id="t_name">Team name:</h2>
-</body>
-
-
-<script>//заполняем инфу по id
-    document.getElementById("t_id").innerHTML += t_id;
-</script>
-
 </html>
