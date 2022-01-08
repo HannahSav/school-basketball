@@ -2,6 +2,8 @@ package com.example.spring_jpa_gradle.service;
 
 import com.example.spring_jpa_gradle.data.Person;
 import com.example.spring_jpa_gradle.data.Team;
+import com.example.spring_jpa_gradle.iowrapper.ITeamCard;
+import com.example.spring_jpa_gradle.iowrapper.TeamCard;
 import com.example.spring_jpa_gradle.repository.PersonRepository;
 import com.example.spring_jpa_gradle.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,10 @@ public class TeamService implements ITeamService {
         this.teamRepository = teamRepository;
     }
 
+    @Override
+    public List<ITeamCard> getTeamsInfo() {
+        return teamRepository.getTeamsInfo();
+    }
 
     @Override
     public List<Team> getAll() {
@@ -29,6 +35,30 @@ public class TeamService implements ITeamService {
         return teamRepository.findAll();
     }
 
+    @Override
+    public Integer getGamesCount(Long id) {
+        return teamRepository.countGames(id);
+    }
+
+    @Override
+    public Integer getPointsAtHome(Long id) {
+        return teamRepository.pointsAtHome(id);
+    }
+
+    @Override
+    public Integer getPointsAsGuest(Long id) {
+        return teamRepository.pointsAsGuest(id);
+    }
+
+    @Override
+    public Team getById(Long id) {
+        return teamRepository.findById(id).get();
+    }
+
+    @Override
+    public Long count() {
+        return teamRepository.count();
+    }
     //@Override
     //public List<String> findAll() {
     //    return teamRepository.findAll();

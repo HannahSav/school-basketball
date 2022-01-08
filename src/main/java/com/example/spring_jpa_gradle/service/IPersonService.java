@@ -1,7 +1,6 @@
 package com.example.spring_jpa_gradle.service;
 
 import com.example.spring_jpa_gradle.data.Person;
-import com.example.spring_jpa_gradle.data.Team;
 
 import java.util.List;
 

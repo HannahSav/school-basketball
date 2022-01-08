@@ -1,0 +1,32 @@
+#headerImage {
+    background-image: url(../img/background.png);
+    background-size: contain;
+    position: relative;
+    height: 14vh;
+}
+#headerInfo {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: black;
+    color: orange;
+    font-family: fantasy;
+}
+#headerMenu {
+    display: flex;
+    height: 8vh;
+    align-items: center;
+    justify-content: space-around;
+    border: 3px solid black;
+}
+#headerMenu div {
+    background-color: white;
+    height: inherit;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+#headerMenu div:hover {
+    background-color: black;
+    color: orange;
+}
