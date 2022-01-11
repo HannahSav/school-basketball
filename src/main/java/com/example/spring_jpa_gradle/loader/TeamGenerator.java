@@ -4,6 +4,7 @@ import com.example.spring_jpa_gradle.data.Team;
 import java.util.Random;
 
 public class TeamGenerator {
+    // TODO
 
     private static final int NAME_LENGTH = 10;
     private static final Random random = new Random();

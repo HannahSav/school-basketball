@@ -2,87 +2,110 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Basket</title>
+    <title>Basketball Tournament App</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/header.css">
 </head>
 <body>
 
-<header>
-    <div id="headerImage"></div>
-    <div id="headerInfo">
-        <p>Курсовая работа "Баскетбол в школах"</p>
-        <p>Группа Р33301</p>
-        <p>Геллер Леонид, Савон Галина</p>
+    <header>
+        <div id="headerImage"></div>
+        <div id="headerInfo">
+            <p>Курсовая работа "Баскетбол в школах"</p>
+            <p>Группа Р33301</p>
+            <p>Геллер Леонид, Савон Галина</p>
+        </div>
+        <div id="headerMenu">
+            <div id="tournamentTableOption"><p>Таблица</p></div>
+            <div id="statisticsOption"><p>Статистика</p></div>
+            <div id="gamesOption"><p>Игры</p></div>
+        </div>
+    </header>
+
+    <div id="tournamentTableWrapper" class="tableWrapper">
+        <table id="tournamentTable">
+            <tr>
+                <th>Позиция</th>
+                <th>Лого</th>
+                <th>Клуб</th>
+                <th>Игры</th>
+                <th>Победы</th>
+                <th>Ничьи</th>
+                <th>Поражения</th>
+                <th>Очки дома</th>
+                <th>Очки в гостях</th>
+                <th>Очки в турнире</th>
+            </tr>
+        </table>
     </div>
-    <div id="headerMenu">
-        <div><p>Таблица</p></div>
-        <div><p>Статистика</p></div>
+
+    <div style="display: none" id="statisticsTableWrapper" class="tableWrapper">
+        <p>3-очковые</p>
+        <table id="statisticsThreePointTable">
+            <tr>
+                <th>Позиция</th>
+                <th>Игрок</th>
+                <th>Клуб</th>
+                <th>Количество</th>
+            </tr>
+        </table>
+
+        <p>2-очковые</p>
+        <table id="statisticsTwoPointTable">
+            <tr>
+                <th>Позиция</th>
+                <th>Игрок</th>
+                <th>Клуб</th>
+                <th>Количество</th>
+            </tr>
+        </table>
+
+        <p>1-очковые</p>
+        <table id="statisticsOnePointTable">
+            <tr>
+                <th>Позиция</th>
+                <th>Игрок</th>
+                <th>Клуб</th>
+                <th>Количество</th>
+            </tr>
+        </table>
+
+        <p>Подборы</p>
+        <table id="statisticsReboundsTable">
+            <tr>
+                <th>Позиция</th>
+                <th>Игрок</th>
+                <th>Клуб</th>
+                <th>Количество</th>
+            </tr>
+        </table>
     </div>
-</header>
 
-<div class="team welcomeMessage">
-    <p>Лидеры текущего турнира:</p>
-</div>
-<div id="wrapper">
-    <table id="tournamentTable">
-        <tr>
-            <th>Позиция</th>
-            <th>Лого</th>
-            <th>Клуб</th>
-            <th>Игры</th>
-            <th>Победы</th>
-            <th>Ничьи</th>
-            <th>Поражения</th>
-            <th>Очки дома</th>
-            <th>Очки в гостях</th>
-            <th>Очки в турнире</th>
-        </tr>
-    </table>
-</div>
+    <div style="display: none" id="gamesTableWrapper" class="tableWrapper">
+        <p>Прошлые игры:</p>
+        <table id="previousGamesTable">
+            <tr>
+                <th>Клуб хозяева</th>
+                <th>Клуб гости</th>
+                <th>Очки хозяев</th>
+                <th>Очки гостей</th>
+                <th>Дата</th>
+                <th>Площадка</th>
+            </tr>
+        </table>
 
-<script>
+        <p>Будущие игры:</p>
+        <table id="upcomingGamesTable">
+            <tr>
+                <th>Клуб хозяева</th>
+                <th>Клуб гости</th>
+                <th>Дата</th>
+                <th>Площадка</th>
+            </tr>
+        </table>
+    </div>
 
-    document.addEventListener("DOMContentLoaded", function(event) {
-        fetch("teaminfo", {
-            method: "get",
-            headers: { "Content-Type": "application/json" }
-        })
-            .then(resp => {
-                if (resp.status === 200) {
-                    return resp.json()
-                } else {
-                    console.log("Status: " + resp.status)
-                    return Promise.reject("server")
-                }
-            })
-            .then(dataJson => {
-                console.log(dataJson);
-                position = 1;
-                dataJson.teamInfo.forEach(function (team) {
-                    document.getElementById("tournamentTable").innerHTML +=
-                        `<tr>
-                            <td>${position}</td>
-                            <td><img height="50px" src="img/team/team${team.photo_id}.jpg" alt="team logo"></td>
-                            <td><a href="team.html?id=${team.teamId}">${team.name}</a></td>
-                            <td><p>${team.games_count}</p></td>
-                            <td><p>${team.victories}</p></td>
-                            <td><p>${team.draws}</p></td>
-                            <td><p>${team.games_count - (team.victories + team.draws)}</p></td>
-                            <td><p>${team.scored_home}</p></td>
-                            <td><p>${team.scored_guest}</p></td>
-                            <td><p>${team.tournament_score}</p></td>
-                        </tr>`
-                    position++;
-                });
-            })
-            .catch(err => {
-                if (err === "server") return
-                console.log(err)
-            })
-
-    });
-</script>
 </body>
+<script type="module" src="js/script.js"></script>
 </html>
 

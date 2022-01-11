@@ -1,6 +1,5 @@
 package com.example.spring_jpa_gradle.iowrapper;
 
-import com.example.spring_jpa_gradle.data.Team;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
