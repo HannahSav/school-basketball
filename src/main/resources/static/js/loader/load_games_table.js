@@ -12,17 +12,14 @@ function load_games() {
             }
         })
         .then(dataJson => {
-            console.log(dataJson);
             dataJson.teamInfo.forEach(function (game) {
                 document.getElementById("previousGamesTable").innerHTML +=
                     `<tr>
-                            <td>${game.name_home_team}</td>
-                            <td>${game.name_guest_team}</td>
-                            <td>${game.points_home_team}</td>
-                            <td>${game.points_guest_team}</td>
-                            <td>${game.time}</td>
-                            <td>${game.gym}</td>
-                        </tr>`
+                        <td style="width: 30%; flex-direction: column; align-items: start;"><span>${game.name_home_team}</span> <span>${game.name_guest_team}</span></td>
+                        <td style="width: 20%; flex-direction: column; align-items: start;"><span>${game.points_home_team}</span> <span>${game.points_guest_team}</span></td>
+                        <td style="width: 30%; flex-direction: column; align-items: start;"><span>${game.time.dayOfMonth}.${game.time.monthValue}.${game.time.year}</span><span>${game.time.hour}:${game.time.minute}</span></td>
+                        <td style="width: 20%;">${game.gym}</td>
+                    </tr>`
             });
         })
         .catch(err => {
@@ -43,15 +40,13 @@ function load_games() {
             }
         })
         .then(dataJson => {
-            console.log(dataJson);
             dataJson.teamInfo.forEach(function (game) {
                 document.getElementById("upcomingGamesTable").innerHTML +=
                     `<tr>
-                            <td>${game.name_home_team}</td>
-                            <td>${game.name_guest_team}</td>
-                            <td>${game.time}</td>
-                            <td>${game.gym}</td>
-                        </tr>`
+                        <td style="width: 50%; flex-direction: column; align-items: start;"><span>${game.name_home_team}</span> <span>${game.name_guest_team}</span></td>
+                        <td style="width: 30%; flex-direction: column; align-items: start;"><span>${game.time.dayOfMonth}.${game.time.monthValue}.${game.time.year}</span><span>${game.time.hour}:${game.time.minute}</span></td>
+                        <td style="width: 20%;">${game.gym}</td>
+                    </tr>`
                 position++;
             });
         })

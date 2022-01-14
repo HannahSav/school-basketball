@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class GameCard implements Serializable, IGameCard {
@@ -11,14 +12,14 @@ public class GameCard implements Serializable, IGameCard {
     private Integer points_guest_team;
     private String name_home_team;
     private String name_guest_team;
-    private Date time;
+    private LocalDateTime time;
     private String gym;
 
     GameCard(Integer points_home_team,
             Integer points_guest_team,
             String name_home_team,
             String name_guest_team,
-            Date time,
+            LocalDateTime time,
             String gym) {
 
         this.points_home_team = points_home_team;
@@ -58,7 +59,7 @@ public class GameCard implements Serializable, IGameCard {
         return name_guest_team;
     }
 
-    public Date getTime() {
+    public LocalDateTime getTime() {
         return time;
     }
 

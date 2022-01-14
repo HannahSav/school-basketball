@@ -16,16 +16,17 @@ function load_tournament () {
             dataJson.teamInfo.forEach(function (team) {
                 document.getElementById("tournamentTable").innerHTML +=
                     `<tr>
-                            <td>${position}</td>
-                            <td><img height="50px" src="img/team/team${team.photo_id}.jpg" alt="team logo"></td>
-                            <td><a href="team.html?id=${team.teamId}">${team.name}</a></td>
-                            <td><p>${team.games_count}</p></td>
-                            <td><p>${team.victories}</p></td>
-                            <td><p>${team.draws}</p></td>
-                            <td><p>${team.games_count - (team.victories + team.draws)}</p></td>
-                            <td><p>${team.scored_home}</p></td>
-                            <td><p>${team.scored_guest}</p></td>
-                            <td><p>${team.tournament_score}</p></td>
+                            <td style="width: 5%; justify-content: center;">${position}</td>
+                            <td style="width: 10%; justify-content: center;"><img height="50px" src="img/team/team${team.photo_id}.jpg" alt="team logo"></td>
+                            <td style="width: 10%;"><a href="team.html?id=${team.teamId}">${team.name}</a></td>
+                            <td style="width: 40%;"/>
+                            <td style="width: 5%; justify-content: center;"><p>${team.games_count}</p></td>
+                            <td style="width: 5%; justify-content: center;"><p>${team.victories}</p></td>
+                            <td style="width: 5%; justify-content: center;"><p>${team.draws}</p></td>
+                            <td style="width: 5%; justify-content: center;"><p>${team.games_count - (team.victories + team.draws)}</p></td>
+                            <td style="width: 5%; justify-content: center;"><p>${team.scored_home}</p></td>
+                            <td style="width: 5%; justify-content: center;"><p>${team.scored_guest}</p></td>
+                            <td style="width: 5%; justify-content: center;"><p>${team.tournament_score}</p></td>
                         </tr>`
                 position++;
             });

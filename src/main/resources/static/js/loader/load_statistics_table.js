@@ -16,11 +16,11 @@ function load_statistics() {
             dataJson.teamInfo.forEach(function (player) {
                 document.getElementById("statisticsThreePointTable").innerHTML +=
                     `<tr>
-                            <td>${position}</td>
-                            <td>${player.first_name} ${player.last_name}</td>
-                            <td>${player.team_name}</td>
-                            <td>${player.points}</td>
-                        </tr>`
+                        <td style="width: 5%; justify-content: center;">${position}</td>
+                        <td style="width: 30%; justify-content: center; flex-direction: column;"><span>${player.first_name} ${player.last_name} </span> <span style="font-size: small">${player.team_name}</span></td>
+                        <td style="width: 60%;"/>
+                        <td style="width: 5%; justify-content: center;">${player.points}</td>
+                    </tr>`
                 position++;
             });
         })
@@ -47,11 +47,11 @@ function load_statistics() {
             dataJson.teamInfo.forEach(function (player) {
                 document.getElementById("statisticsTwoPointTable").innerHTML +=
                     `<tr>
-                            <td>${position}</td>
-                            <td>${player.first_name} ${player.last_name}</td>
-                            <td>${player.team_name}</td>
-                            <td>${player.points}</td>
-                        </tr>`
+                        <td style="width: 5%; justify-content: center;">${position}</td>
+                        <td style="width: 30%; justify-content: center; flex-direction: column;"><span>${player.first_name} ${player.last_name} </span> <span style="font-size: small">${player.team_name}</span></td>
+                        <td style="width: 60%;"/>
+                        <td style="width: 5%; justify-content: center;">${player.points}</td>
+                    </tr>`
                 position++;
             });
         })
@@ -78,11 +78,11 @@ function load_statistics() {
             dataJson.teamInfo.forEach(function (player) {
                 document.getElementById("statisticsOnePointTable").innerHTML +=
                     `<tr>
-                            <td>${position}</td>
-                            <td>${player.first_name} ${player.last_name}</td>
-                            <td>${player.team_name}</td>
-                            <td>${player.points}</td>
-                        </tr>`
+                        <td style="width: 5%; justify-content: center;">${position}</td>
+                        <td style="width: 30%; justify-content: center; flex-direction: column;"><span>${player.first_name} ${player.last_name} </span> <span style="font-size: small">${player.team_name}</span></td>
+                        <td style="width: 60%;"/>
+                        <td style="width: 5%; justify-content: center;">${player.points}</td>
+                    </tr>`
                 position++;
             });
         })
@@ -108,11 +108,11 @@ function load_statistics() {
             dataJson.teamInfo.forEach(function (player) {
                 document.getElementById("statisticsReboundsTable").innerHTML +=
                     `<tr>
-                            <td>${position}</td>
-                            <td>${player.first_name} ${player.last_name}</td>
-                            <td>${player.team_name}</td>
-                            <td>${player.points}</td>
-                        </tr>`
+                        <td style="width: 5%; justify-content: center;">${position}</td>
+                        <td style="width: 30%; justify-content: center; flex-direction: column;"><span>${player.first_name} ${player.last_name} </span> <span style="font-size: small">${player.team_name}</span></td>
+                        <td style="width: 60%;"/>
+                        <td style="width: 5%; justify-content: center;">${player.points}</td>
+                    </tr>`
                 position++;
             });
         })

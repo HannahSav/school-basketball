@@ -2,6 +2,21 @@
     position: absolute;
     width: 90%;
     left: 5%;
+    top: 38vh;
+}
+.tableWrapper table {
+    width: 100%;
+}
+.tableWrapper tr {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    border: 1px solid black;
+}
+.tableWrapper th, td {
+    display: flex;
+    align-items: center;
+    justify-content: left;
 }
 .team {
     position: relative;

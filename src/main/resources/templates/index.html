@@ -9,7 +9,6 @@
 <body>
 
     <header>
-        <div id="headerImage"></div>
         <div id="headerInfo">
             <p>Курсовая работа "Баскетбол в школах"</p>
             <p>Группа Р33301</p>
@@ -25,16 +24,15 @@
     <div id="tournamentTableWrapper" class="tableWrapper">
         <table id="tournamentTable">
             <tr>
-                <th>Позиция</th>
-                <th>Лого</th>
-                <th>Клуб</th>
-                <th>Игры</th>
-                <th>Победы</th>
-                <th>Ничьи</th>
-                <th>Поражения</th>
-                <th>Очки дома</th>
-                <th>Очки в гостях</th>
-                <th>Очки в турнире</th>
+                <th style="width: 10%; justify-content: center;">Клуб</th>
+                <th style="width: 56%;"/>
+                <th style="width: 5%; justify-content: center;">И</th>
+                <th style="width: 5%; justify-content: center;">В</th>
+                <th style="width: 5%; justify-content: center;">Н</th>
+                <th style="width: 5%; justify-content: center;">П</th>
+                <th style="width: 5%; justify-content: center;">ОД</th>
+                <th style="width: 5%; justify-content: center;">ОГ</th>
+                <th style="width: 5%; justify-content: center;">О</th>
             </tr>
         </table>
     </div>
@@ -43,66 +41,46 @@
         <p>3-очковые</p>
         <table id="statisticsThreePointTable">
             <tr>
-                <th>Позиция</th>
-                <th>Игрок</th>
-                <th>Клуб</th>
-                <th>Количество</th>
+                <th style="width: 10%; justify-content: center;">Игрок</th>
+                <td style="width: 75%;"/>
+                <th style="width: 15%; justify-content: center;">3-очковые</th>
             </tr>
         </table>
 
         <p>2-очковые</p>
         <table id="statisticsTwoPointTable">
             <tr>
-                <th>Позиция</th>
-                <th>Игрок</th>
-                <th>Клуб</th>
-                <th>Количество</th>
+                <th style="width: 10%; justify-content: center;">Игрок</th>
+                <td style="width: 75%;"/>
+                <th style="width: 15%; justify-content: center;">2-очковые</th>
             </tr>
         </table>
 
         <p>1-очковые</p>
         <table id="statisticsOnePointTable">
             <tr>
-                <th>Позиция</th>
-                <th>Игрок</th>
-                <th>Клуб</th>
-                <th>Количество</th>
+                <th style="width: 10%; justify-content: center;">Игрок</th>
+                <td style="width: 75%;"/>
+                <th style="width: 15%; justify-content: center;">1-очковые</th>
             </tr>
         </table>
 
         <p>Подборы</p>
         <table id="statisticsReboundsTable">
             <tr>
-                <th>Позиция</th>
-                <th>Игрок</th>
-                <th>Клуб</th>
-                <th>Количество</th>
+                <th style="width: 10%; justify-content: center;">Игрок</th>
+                <td style="width: 75%;"/>
+                <th style="width: 15%; justify-content: center;">Подборы</th>
             </tr>
         </table>
     </div>
 
     <div style="display: none" id="gamesTableWrapper" class="tableWrapper">
         <p>Прошлые игры:</p>
-        <table id="previousGamesTable">
-            <tr>
-                <th>Клуб хозяева</th>
-                <th>Клуб гости</th>
-                <th>Очки хозяев</th>
-                <th>Очки гостей</th>
-                <th>Дата</th>
-                <th>Площадка</th>
-            </tr>
-        </table>
+        <table id="previousGamesTable"></table>
 
         <p>Будущие игры:</p>
-        <table id="upcomingGamesTable">
-            <tr>
-                <th>Клуб хозяева</th>
-                <th>Клуб гости</th>
-                <th>Дата</th>
-                <th>Площадка</th>
-            </tr>
-        </table>
+        <table id="upcomingGamesTable"></table>
     </div>
 
 </body>

@@ -1,9 +1,3 @@
-#headerImage {
-    background-image: url(../img/background.png);
-    background-size: contain;
-    position: relative;
-    height: 14vh;
-}
 #headerInfo {
     display: flex;
     align-items: center;
@@ -13,20 +7,24 @@
     font-family: fantasy;
 }
 #headerMenu {
+    position: relative;
+    top: 1vh;
     display: flex;
     height: 8vh;
     align-items: center;
     justify-content: space-around;
     border: 3px solid black;
+    background: black;
+    color: orange;
+    font-family: fantasy;
 }
 #headerMenu div {
-    background-color: white;
+    background-color: black;
     height: inherit;
     width: 50%;
     display: flex;
     justify-content: center;
 }
 #headerMenu div:hover {
-    background-color: black;
-    color: orange;
+    background-color: rgb(32, 32, 32);
 }
