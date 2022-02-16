@@ -1,15 +1,89 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org">
-<head lang="en">
-    <meta charset="UTF-8"/>
-    <title>ReactJS + Spring Data REST</title>
-    <link rel="stylesheet" href="/main.css" />
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Basketball Tournament App</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/header.css">
 </head>
 <body>
 
-<div id="react"></div>
+    <header>
+        <div id="headerInfo">
+            <p>Курсовая работа "Баскетбол в школах"</p>
+            <p>Группа Р33301</p>
+            <p>Геллер Леонид, Савон Галина</p>
+        </div>
+        <div id="headerMenu">
+            <div id="tournamentTableOption"><p>Таблица</p></div>
+            <div id="statisticsOption"><p>Статистика</p></div>
+            <div id="gamesOption"><p>Игры</p></div>
+        </div>
+    </header>
 
-<script src="built/bundle.js"></script>
+    <div id="tournamentTableWrapper" class="tableWrapper">
+        <table id="tournamentTable">
+            <tr>
+                <th style="width: 10%; justify-content: center;">Клуб</th>
+                <th style="width: 56%;"/>
+                <th style="width: 5%; justify-content: center;">И</th>
+                <th style="width: 5%; justify-content: center;">В</th>
+                <th style="width: 5%; justify-content: center;">Н</th>
+                <th style="width: 5%; justify-content: center;">П</th>
+                <th style="width: 5%; justify-content: center;">ОД</th>
+                <th style="width: 5%; justify-content: center;">ОГ</th>
+                <th style="width: 5%; justify-content: center;">О</th>
+            </tr>
+        </table>
+    </div>
+
+    <div style="display: none" id="statisticsTableWrapper" class="tableWrapper">
+        <p>3-очковые</p>
+        <table id="statisticsThreePointTable">
+            <tr>
+                <th style="width: 10%; justify-content: center;">Игрок</th>
+                <td style="width: 75%;"/>
+                <th style="width: 15%; justify-content: center;">3-очковые</th>
+            </tr>
+        </table>
+
+        <p>2-очковые</p>
+        <table id="statisticsTwoPointTable">
+            <tr>
+                <th style="width: 10%; justify-content: center;">Игрок</th>
+                <td style="width: 75%;"/>
+                <th style="width: 15%; justify-content: center;">2-очковые</th>
+            </tr>
+        </table>
+
+        <p>1-очковые</p>
+        <table id="statisticsOnePointTable">
+            <tr>
+                <th style="width: 10%; justify-content: center;">Игрок</th>
+                <td style="width: 75%;"/>
+                <th style="width: 15%; justify-content: center;">1-очковые</th>
+            </tr>
+        </table>
+
+        <p>Подборы</p>
+        <table id="statisticsReboundsTable">
+            <tr>
+                <th style="width: 10%; justify-content: center;">Игрок</th>
+                <td style="width: 75%;"/>
+                <th style="width: 15%; justify-content: center;">Подборы</th>
+            </tr>
+        </table>
+    </div>
+
+    <div style="display: none" id="gamesTableWrapper" class="tableWrapper">
+        <p>Прошлые игры:</p>
+        <table id="previousGamesTable"></table>
+
+        <p>Будущие игры:</p>
+        <table id="upcomingGamesTable"></table>
+    </div>
 
 </body>
+<script type="module" src="js/script.js"></script>
 </html>
+

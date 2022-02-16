@@ -6,15 +6,15 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
-public class TeamInfoCard implements Serializable {
-    private List<ITeamCard> teamInfo;
+public class GameInfoCard implements Serializable {
+    private List<IGameCard> gameInfo;
 
-    public TeamInfoCard(List<ITeamCard> teamInfo) {
-        this.teamInfo = teamInfo;
+    public GameInfoCard(List<IGameCard> gameInfo) {
+        this.gameInfo = gameInfo;
     }
 
-    public List<ITeamCard> getTeamInfo() {
-        return teamInfo;
+    public List<IGameCard> getTeamInfo() {
+        return gameInfo;
     }
 
     @Override
@@ -24,7 +24,7 @@ public class TeamInfoCard implements Serializable {
         try {
             out.append(objectMapper.writeValueAsString(this));
         } catch (IOException e) {
-            out.append("TeamInfoCard serialization ERROR\n");
+            out.append("GameInfoCard serialization ERROR\n");
             out.append(e.getMessage());
         }
         return out.toString();

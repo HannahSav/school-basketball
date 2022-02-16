@@ -1,39 +1,15 @@
 package com.example.spring_jpa_gradle.repository;
 
-import com.example.spring_jpa_gradle.data.IPlayerCard;
 import com.example.spring_jpa_gradle.data.Team;
 import com.example.spring_jpa_gradle.iowrapper.ITeamCard;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-
 @Repository
 public interface TeamRepository extends JpaRepository<Team, Long> {
-
-    @Query(value = "SELECT COUNT(*) FROM game " +
-            "WHERE game.home_team_id = :team_id OR game.guest_team_id = :team_id",
-            nativeQuery = true)
-    Integer countGames(@Param("team_id") Long team_id);
-
-    @Query(value = "SELECT sum(two_points*2 + three_points*3 + free_throws) FROM team " +
-            "JOIN game g on (team.team_id = g.home_team_id) " +
-            "JOIN player p on team.team_id = p.team_id " +
-            "JOIN statistics s on (p.player_id = s.player_id AND g.home_team_id = s.game_id) " +
-            "WHERE p.team_id = :team_id",
-            nativeQuery = true)
-    Integer pointsAtHome(@Param("team_id") Long team_id);
-
-    @Query(value = "SELECT sum(two_points*2 + three_points*3 + free_throws) FROM team " +
-            "JOIN game g on (team.team_id = g.guest_team_id) " +
-            "JOIN player p on team.team_id = p.team_id " +
-            "JOIN statistics s on (p.player_id = s.player_id AND g.home_team_id = s.game_id) " +
-            "WHERE p.team_id = :team_id",
-            nativeQuery = true)
-    Integer pointsAsGuest(@Param("team_id") Long team_id);
 
     @Query(value = "SELECT *, sum(victories*2 + draws) as tournament_score FROM (\n" +
             "                  SELECT team.photo_id, team.name, COUNT(game_id) as games_count,\n" +
